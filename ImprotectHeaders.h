@@ -62,6 +62,29 @@ static double GetCrossDistance(double x1, double y1, double x2, double y2) {
 }
 
 
+void CheckIsRunning() {
+	SPOOF;
+	CreateMutexA(0, FALSE, (skCrypt("Local\\$myprogram$").decrypt()));
+	if (GetLastError() == ERROR_ALREADY_EXISTS) {
+		::ShowWindow_Spoofed(::GetConsoleWindow(), SW_HIDE);
+		bb();
+		MessageBoxA(0, skCrypt("Cheat Is Already Running Close it Manually Or Press End ").decrypt(), skCrypt(" ").decrypt(), 0);
+		exit(0);
+
+	}
+}
+
+void ConfigCheck() {
+
+	SPOOF;
+
+	if (filesystem::exists(skCrypt("C:\\Windows\\INF\\Private.ini").decrypt()))
+	{
+		Load_Settings(skCrypt("C:\\Windows\\INF\\Private.ini").decrypt());
+
+	}
+
+}
 
 float RandomFloat(float a, float b)
 {
